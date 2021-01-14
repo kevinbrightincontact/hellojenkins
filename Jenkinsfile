@@ -5,7 +5,9 @@ pipeline {
             steps {
                 sh 'go version'
 
-                docker.build("hellojenkins:1")
+                node {
+                    docker.build("hellojenkins:1")
+                }
             }
         }
     }
