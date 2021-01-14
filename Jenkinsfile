@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker { image 'golang' } }
+    agent { docker { image 'winamd64/golang' } }
     stages {
         stage('build') {
             steps {
