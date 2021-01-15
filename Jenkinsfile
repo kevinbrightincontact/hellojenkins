@@ -6,6 +6,8 @@ node {
         image = docker.build("hello-jenkins:1.0")
     }
     stage('Test') {
-        sh 'cd ./src && go test ....'
+        image.inside {
+            sh 'cd ./src && go test ....'
+        }
     }
 }
