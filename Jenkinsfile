@@ -7,7 +7,7 @@ node {
     }
     stage('Test') {
         image.inside {
-            sh 'ls'
+            sh 'go test ./...'
         }
     }
 }
