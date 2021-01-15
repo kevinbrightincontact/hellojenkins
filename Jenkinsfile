@@ -1,14 +1,5 @@
-pipeline {
-    agent { dockerfile true }
-    stages {
-        stage('build') {
-            steps {
-                sh 'go version'
+node {
+    checkout scm
 
-                node {
-                    docker.build("hellojenkins:1")
-                }
-            }
-        }
-    }
+    def image = docker.build("hello-jenkins:1.0")
 }
