@@ -1,5 +1,11 @@
 node {
-    checkout scm
+    def image
+    stage('Build') {
+        checkout scm
 
-    def image = docker.build("hello-jenkins:1.0")
+        image = docker.build("hello-jenkins:1.0")
+    }
+    stage('Test') {
+        sh 'cd ./src && go test ....'
+    }
 }
