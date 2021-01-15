@@ -7,7 +7,7 @@ node {
     }
     stage('Test') {
         image.inside {
-            sh 'hello from mars'
+            sh 'echo "hello from mars"'
         }
     }
 }
