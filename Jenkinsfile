@@ -7,7 +7,7 @@ node {
     }
     stage('Test') {
         image.inside {
-            sh 'go test /go/src/hellojenkins/mypackage'
+            sh 'cd /go/src/hellojenkins && go test ./...'
         }
     }
 }
