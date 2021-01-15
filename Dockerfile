@@ -1,5 +1,7 @@
 FROM golang
 
-COPY ./main.go ./src/main.go
+COPY . ./src/hellojenkins
 
-RUN go build ./src/main.go
+RUN cd ./src/hellojenkins && go get ./...
+
+RUN go build ./src/hellojenkins/main.go
