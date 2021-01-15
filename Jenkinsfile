@@ -8,7 +8,7 @@ node {
     stage('Test') {
         image.inside {
             sh 'export XDG_CACHE_HOME=/tmp/.cache'
-            sh 'cd ./src/hellojenkins && go test ./...'
+            sh 'cd /go/src/hellojenkins && go test ./...'
         }
     }
 }
