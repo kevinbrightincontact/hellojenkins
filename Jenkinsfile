@@ -14,7 +14,7 @@ node {
     }
     stage('Test') {
         withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
-            image.inside {
+            image.inside("-u 0") {
                 sh 'echo $USER'
             }
         }
