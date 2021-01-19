@@ -1,25 +1,14 @@
-pipeline {
-    agent any    
+node {
+    def image
+    stage('Build') {
+        checkout scm
 
-    environment {
-        XDG_CACHE_HOME = '/tmp/.cache'
+        image = docker.build("hello-jenkins:1.0")
     }
-
-    stages {
-        stage('Build') {   
-            // Use golang.
-            agent { docker { image 'golang' } }
-
-            steps {                                           
-                sh 'go build main.go'               
-            }            
-        }
-        
-        stage('Test') {
-            agent { docker { image 'golang' } }
-            
-            steps {
-                sh 'go test ./...'
+    stage('Test') {
+        withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
+            image.inside {
+                sh 'echo $USER'
             }
         }
     }
