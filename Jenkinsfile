@@ -13,8 +13,10 @@ node {
         }
     }
     stage('Test') {
-        image.inside {
-            sh 'cd /go/src/hellojenkins && go test ./...'
+        withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
+            image.inside {
+                sh 'cd /go/src/hellojenkins && go test ./...'
+            }
         }
     }
 }
