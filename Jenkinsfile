@@ -6,13 +6,21 @@ pipeline {
     }
 
     stages {
-        stage('Build & Test') {   
+        stage('Build') {   
             // Use golang.
             agent { docker { image 'golang' } }
 
             steps {                                           
                 sh 'go build main.go'               
             }            
+        }
+        
+        stage('Test') {
+            agent { docker { image 'golang' } }
+            
+            steps {
+                sh 'go test ./...'
+            }
         }
     }
 }
