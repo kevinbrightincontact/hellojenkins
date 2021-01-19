@@ -7,7 +7,7 @@ node {
 
         withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
             image.inside {
-                sh 'cd /go/src/hellojenkins && go get -t ./...'
+                sh 'cd /go/src/hellojenkins && go mod download'
                 sh 'go build main.go'
             }
         }
