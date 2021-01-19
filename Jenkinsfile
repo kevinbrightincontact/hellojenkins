@@ -8,7 +8,7 @@ node {
     stage('Test') {
         withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
             image.inside {
-                sh 'cd /go/src/hellojenkins && go test ./...'
+                sh 'cd /go/src/hellojenkins && sudo go test ./...'
             }
         }
     }
