@@ -3,7 +3,7 @@ node {
     stage('Build') {
         checkout scm
 
-        image = docker.build("hello-jenkins:1.0")
+        image = docker.build("hello-jenkins:1.0", "-u root:root ./dockerfiles")
 
         withEnv(['XDG_CACHE_HOME=/tmp/.cache']){
             image.inside {
